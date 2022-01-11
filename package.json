@@ -1,0 +1,24 @@
+{
+  "name": "cs340_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Aidan-B1409/cs340_project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Aidan-B1409/cs340_project/issues"
+  },
+  "homepage": "https://github.com/Aidan-B1409/cs340_project#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "forever": "^4.0.2",
+    "mysql": "^2.18.1"
+  }
+}
