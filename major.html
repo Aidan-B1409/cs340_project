@@ -55,40 +55,43 @@
 
       <table class="table table-bordered">
         <tr>
-            <th colspan="4" class="table_header">Majors at {university.name}</th>
+            <th colspan="3" class="table_header">Majors at {university.name}</th>
         </tr>
         <tr>
             <th class="table_header">Name</th>
+            <th class="table_header">Major Code</th>
             <th class="table_header">Description</th>
         </tr>
         <tr>
-            <td></td>
-            <td></td>
+            <td>"  "</td>
+            <td>"  "</td>
+            <td>"  "</td>
         </tr>
       </table>
 
       <div id="search" class="form-group">
-        <label for="exampleFormControlInput1">Search for a major</label>
-        <!--SELECT * FROM Major WHERE name = form submission-->
-        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="e.x. 'Underwater Basket Weaving'">
+        <label for="exampleFormControlInput1">Query for Major</label>
+        <!--automatically insert FROM Faculty into query-->
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="SELECT * WHERE fname = 'Computer Science'">
       </div>
 
-      <table class="table table-bordered">
+    <table class="table table-bordered">
         <tr>
-            <th colspan="4" class="table_header">Classes for {major.name}</th>
+            <th>Name</th>
+            <td contenteditable="true">varchar</td>
         </tr>
         <tr>
-            <th class="table_header">Name</th>
-            <th class="table_header">Description</th>
+            <th>Major Code</th>
+            <td contenteditable="true">integer</td>
         </tr>
         <tr>
-            <td></td>
-            <td></td>
+            <th>Description</th>
+            <td contenteditable="true">varchar</td>
         </tr>
-      </table>
+    </table>
+
 
     </div><!-- /.container -->
-
 
     <!-- Bootstrap core JavaScript
     ================================================== -->

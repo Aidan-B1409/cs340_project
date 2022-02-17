@@ -53,6 +53,58 @@
         <h1>Eudcation Database Management Tool Demo</h1>
       </div>
 
+      <table class="table table-bordered">
+        <tr>
+            <th colspan="4" class="table_header">Faculty at {university.name}</th>
+        </tr>
+        <tr>
+            <th class="table_header">Name</th>
+            <th class="table_header">Date of Birth</th>
+            <th class="table_header">Mailing Address</th>
+            <th class="table_header">ZIP Code</th>
+        </tr>
+        <tr>
+            <td>"  "</td>
+            <td>"  "</td>
+            <td>"  "</td>
+            <td>"  "</td>
+        </tr>
+      </table>
+
+      <div id="search" class="form-group">
+        <label for="exampleFormControlInput1">Query for Faculty</label>
+        <!--automatically insert FROM Faculty into query-->
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="SELECT * WHERE fname = 'John'">
+      </div>
+
+    <table class="table table-bordered">
+        <tr>
+            <th>First Name</th>
+            <td contenteditable="true">varchar</td>
+        </tr>
+        <tr>
+            <th>Last Name</th>
+            <td contenteditable="true">varchar</td>
+        </tr>
+        <tr>
+            <th>Date of Birth</th>
+            <td contenteditable="true">DATE</td>
+        </tr>
+        <tr>
+            <th>Street Name</th>
+            <td contenteditable="true">varchar</td>
+        </tr>
+        <tr>
+            <th>Street Number</th>
+            <td contenteditable="true">integer</td>
+        </tr>
+        <tr>
+            <th>Zip Code</th>
+            <td contenteditable="true">Integer</td>
+        </tr>
+    </table>
+
+
     </div><!-- /.container -->
 
 
