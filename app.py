@@ -2,6 +2,9 @@ from flask import Flask, render_template, json, redirect
 from flask_mysqldb import MySQL
 from flask import request
 import os
+import database.db_connector as db
+
+db_connection = db.connect_to_database()
 
 app = Flask(__name__)
 
@@ -16,7 +19,7 @@ mysql = MySQL(app)
 # our Routes
 @app.route('/')
 def root():
-    return render_template("home.j2")
+    return render_template("main.j2")
 
 @app.route('/student', methods=["POST", "GET"])
 def student():
@@ -29,23 +32,20 @@ def student():
             gpa = request.form["GPA"]
             street_name = request.form["street_name"]
             street_number = request.form["street_number"]
-			zip_code = request.form["zip_code"]
-
-            # If there are no null inputs
-            else:
-                query = "INSERT INTO student (first_name, last_name, date_of_birth, gpa, street_name, street_number, zip_code, university_id, major_code) VALUES (%s, %s, %s, %s, %s, %s, %s, %s. %s)"
-                cur = mysql.connection.cursor()
-                cur.execute(query, (first_name, last_name, date_of_birth, termed, gpa, street_name, street_number, zip_code, university_id, major_code))
-                mysql.connection.commit()
+            zip_code = request.form["zip_code"]
+            query = "INSERT INTO student (first_name, last_name, date_of_birth, gpa, street_name, street_number, zip_code, university_id, major_code) VALUES (%s, %s, %s, %s, %s, %s, %s, %s. %s)"
+            cur = mysql.connection.cursor()
+            cur.execute(query, (first_name, last_name, date_of_birth, gpa, street_name, street_number, zip_code, university_id, major_code))
+            mysql.connection.commit()
                 
             # redirect back to student page
             return redirect("/student")
 
     # Display student table
     if request.method == "GET":
-	# Aiden code goes here
-
-
+	    results = json.dumps(cur.fetchall())
+        return results
+    
 @app.route('/faculty', methods=["POST", "GET"])
 def faculty():
      # Insert a worksite into the faculty table
@@ -58,20 +58,17 @@ def faculty():
             street_number = request.form["street_number"]
 			zip_code = request.form["zip_code"]
 
-            # No null inputs allowed
-            # If there are no null inputs
-        else:
             query = "INSERT INTO faculty (first_name, last_name, date_of_birth, street_name, street_number, zip_code, university_id) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
             cur = mysql.connection.cursor()
-            cur.execute(query, (first_name, last_name, date_of_birth, termed, gpa, street_name, street_number, zip_code, university_id))
+            cur.execute(query, (first_name, last_name, date_of_birth, street_name, street_number, zip_code, university_id))
             mysql.connection.commit()
 
         # Redirect back to faculty page
-        return redirect("/faculty
+        return redirect("/faculty")
 		
     # Display faculty table
     if request.method == "GET":
-	# Aiden code goes here
+        return null
 
 @app.route('/course', methods=["POST", "GET"])
 def course():
@@ -86,11 +83,10 @@ def course():
 			start_time = request.form["start_time"]
 			end_time = request.form["end_time"]
 
-            else:
-                query = "INSERT INTO course (course_code, course_name, course_description, start_date, end_date, start_time, end_time, university_id, faculty_id, major_code) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
-                cur = mysql.connection.cursor()
-                cur.execute(query, (course_code, course_name, course_description, start_date, end_date, start_time, end_time, university_id, faculty_id, major_code))
-                mysql.connection.commit()
+            query = "INSERT INTO course (course_code, course_name, course_description, start_date, end_date, start_time, end_time, university_id, faculty_id, major_code) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)"
+            cur = mysql.connection.cursor()
+            cur.execute(query, (course_name, course_code, course_description, start_date, end_date, start_time, end_time, university_id, faculty_id, major_code))
+            mysql.connection.commit()
 
             # redirect back to course page
             return redirect("/course")
@@ -106,11 +102,11 @@ def major():
             major_code = request.form["major_code"]
 			description = request.form["description"]
 
-            else:
-                query = "INSERT INTO major (name, major_code, description, university_id) VALUES (%s, %s, %s, %s)"
-                cur = mysql.connection.cursor()
-                cur.execute(query, (name, major_code, description, university_id))
-                mysql.connection.commit()
+
+            query = "INSERT INTO major (name, major_code, description, university_id) VALUES (%s, %s, %s, %s)"
+            cur = mysql.connection.cursor()
+            cur.execute(query, (name, major_code, description, university_id))
+            mysql.connection.commit()
 
             # redirect back to major page
             return redirect("/major")
@@ -131,14 +127,18 @@ def university():
 			street_num = request.form["street_num"]
 			zip_code =  request.form["zip_code"]
 
-            else:
-                query = "INSERT INTO university (student_count, ranking, name, est_date, street_name, street_num, zip_code) VALUES (%s, %s, %s, %s, %s, %s, %s)"
-                cur = mysql.connection.cursor()
-                cur.execute(query, (student_count, ranking, name, est_date, street_name, street_num, zip_code))
-                mysql.connection.commit()
+            query = "INSERT INTO university (student_count, ranking, name, est_date, street_name, street_num, zip_code) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+            cur = mysql.connection.cursor()
+            cur.execute(query, (student_count, ranking, name, est_date, street_name, street_num, zip_code))
+            mysql.connection.commit()
 
             # redirect back to university page
             return redirect("/university")
 
     # Display course table
 
+# Listener
+if __name__ == "__main__":
+
+    #Start the app on port 3000, it will be different once hosted
+    app.run(port=4444, debug=True)
