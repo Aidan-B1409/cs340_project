@@ -30,4 +30,23 @@
     </table>
 </div>
 
+<div class="container">
+        <div class="starter-template">
+            <h1>Hire a new faculty member</h1>
+        </div>
+
+        <form action="" method="post">
+            {% for field in form_fields.items() %}
+                <div class="form-group row">
+                    <label for="{{field[0]}}" class="col-sm-2 col-form-label">{{field[1]}}</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="{{field[0]}}" id="{{field[0]}}">
+                    </div>
+                </div>
+            {% endfor %}
+            <button type="submit" name="faculty-submit" value="faculty-submit" class="btn btn-primary mb-2">Submit Faculty</button>
+        </form>
+    </div>
+</div>
+
 {% endblock %}

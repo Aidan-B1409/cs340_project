@@ -5,17 +5,49 @@
 {% block main %}
 
 <div class="container">
-<br>
-<br>
-<b> Update University </b>
+
+    <div class="starter-template">
+        <h1>University Directory</h1>
+    </div>
+
     <table class="table table-bordered">
-        {% for element in uni_info[0].items() %}
-        <tr>
-            <th>{{ element[0] }}</th>
-            <td>{{ element[1] }}</td>
-        </tr>
-        {% endfor %}
+        <thead>
+            <tr>
+                {% for key in uni_info[0].keys()%}
+                    <th> {{key}} </th>
+                {%endfor%}
+            </tr>
+        </thead>
+        <tbody>
+            {% for university in uni_info%}
+            <tr>
+                {%for key in university.keys()%}
+                    <td>{{university[key]}}</td>
+                {%endfor%}
+            </tr>
+            {%endfor%}
+        </tbody>
     </table>
 </div>
+
+<div class="container">
+        <div class="starter-template">
+            <h1>Add a new University</h1>
+        </div>
+
+        <form action="" method="post">
+            {% for field in form_fields.items() %}
+                <div class="form-group row">
+                    <label for="{{field[0]}}" class="col-sm-2 col-form-label">{{field[1]}}</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="{{field[0]}}" id="{{field[0]}}">
+                    </div>
+                </div>
+            {% endfor %}
+            <button type="submit" name="university-submit" value="university-submit" class="btn btn-primary mb-2">Submit university</button>
+        </form>
+    </div>
+</div>
+
 
 {% endblock %}
