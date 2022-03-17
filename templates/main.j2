@@ -1,9 +1,27 @@
-<html>
-<head>
-    <title>OSU - CS 340 - Introduction to Databases - Flask Demo Project</title>
-</head>
-<body>
-    <h1>CS 340 - Introduction to Databases</h1>
-    <p>This is a demonstration project created to show students how to create a Flask app and connect it to a MySQL database.</p>
-</body>
-</html>
+{% extends "public_template.j2" %}
+
+{% block main %}
+<div class="container">
+    <div class="starter-template">
+        <h1>Education Database Management Tool</h1>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Page</th>
+                <th>Use Case</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        {% for page in pages.items() %}
+        <tr>
+            <td><a href="{{page[0]}}"> {{page[0]}} </a></td>
+            <td>{{page[1]}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

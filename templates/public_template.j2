@@ -12,7 +12,7 @@
     <title>cs-340 project</title>
 
     <!-- Custom styles for this template -->
-    <link href="index.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='index.css') }}" rel="stylesheet">
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -22,7 +22,7 @@
   </head>
 
   <body>
-
+    
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -37,91 +37,19 @@
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
-            <li><a href="university.html">University</a></li>
-            <li><a href="major.html">Major</a></li>
-            <li><a href="faculty.html">Faculty</a></li>
-            <li><a href="student.html">Student</a></li>
-            <li><a href="class.html">Class</a></li>
+            <li><a href="university">University</a></li>
+            <li><a href="major">Major</a></li>
+            <li><a href="faculty">Faculty</a></li>
+            <li><a href="student">Student</a></li>
+            <li><a href="class">Class</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
-    <div class="container">
-
-      <div class="starter-template">
-        <h1>Eudcation Database Management Tool Demo</h1>
-      </div>
-      <table class="table table-bordered">
-        <tr>
-            <th>
-                Page
-            </th>
-            <th>
-                Database Table
-            </th>
-            <th>
-                Use Case
-            </th>
-        </tr>
-        <tr>
-          <td>
-            <a href="student.html">student.html</a>
-          </td>
-          <td>
-            Student
-          </td>
-          <td>
-            Add new students to the university, assign classes and major to student.
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <a href="faculty.html">faculty.html</a>
-          </td>
-          <td>
-            Faculty
-          </td>
-          <td>
-            Add new faculty to the university. 
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <a href="class.html">class.html</a>
-          </td>
-          <td>
-            Class
-          </td>
-          <td>
-            Add and remove classes, assign an instructor to a class, add a major to a class. 
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <a href="major.html">major.html</a>
-          </td>
-          <td>
-            Major
-          </td>
-          <td>
-            Add a new major to the university, check which classes are available for a major. 
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <a href="university.html">university.html</a> 
-          </td>
-          <td>
-            University
-          </td>
-          <td>
-            Update information about the university. See all faculty employeed at a university. See all students enrolled. See all classes/majors offered.
-          </td>
-        </tr>
-
-      </table>
-    </div><!-- /.container -->
+    <main>
+      {% block main %}{% endblock %}
+    </main>
 
 
     <!-- Bootstrap core JavaScript
