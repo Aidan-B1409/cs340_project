@@ -14,32 +14,53 @@ def root():
     pages = {
         'student': 'Add new students to the school',
         'faculty': 'Add new facutly to the staff. Search for specific instructors by name.',
-        'class': 'Add new classes to the university. View currently available classes.',
+        'course': 'Add new coursees to the university. View currently available coursees.',
         'major': 'Add new majors to the university. Search for a major.',
         'university': 'Update information about the school'
     }
     return render_template("main.j2", pages=pages)
 
 # TODO - More Routes!
-@app.route('/university')
+@app.route('/university', methods=['POST', 'GET'])
 def university():
-    return "This is the university route"
+    if(request.method == 'GET'):
+        query = "SELECT * FROM university"
+        cursor = db.execute_query(db_connection=db_connection, query=query)
+        results = cursor.fetchall()
+        return render_template("university.j2", uni_info=results)
+    return render_template("university.j2")
 
 @app.route('/faculty')
 def faculty():
-    return "This is the faculty route"
+    if(request.method == 'GET'):
+        query = "SELECT * FROM faculty"
+        cursor = db.execute_query(db_connection=db_connection, query=query)
+        results = cursor.fetchall()
+        return render_template("faculty.j2", faculty_info=results)
 
-@app.route('/class')
-def class_page():
-    return "This is the class route"
+@app.route('/course')
+def course():
+    if(request.method == 'GET'):
+        query = "SELECT * FROM course"
+        cursor = db.execute_query(db_connection=db_connection, query=query)
+        results = cursor.fetchall()
+        return render_template("course.j2", course_info=results)
 
 @app.route('/major')
 def major():
-    return "This is the major route"
+    if(request.method == 'GET'):
+        query = "SELECT * FROM major"
+        cursor = db.execute_query(db_connection=db_connection, query=query)
+        results = cursor.fetchall()
+        return render_template("major.j2", major_info=results)
 
 @app.route('/student')
 def student():
-    return "This is the student route"
+    if(request.method == 'GET'):
+        query = "SELECT * FROM student"
+        cursor = db.execute_query(db_connection=db_connection, query=query)
+        results = cursor.fetchall()
+        return render_template("students.j2", student_info=results)
 
 # Listener
 if __name__ == "__main__":

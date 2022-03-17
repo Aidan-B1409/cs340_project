@@ -1,0 +1,33 @@
+{% extends "public_template.j2" %}
+
+{% block title %}Faculty{%endblock%}
+
+{% block main %}
+
+<div class="container">
+
+    <div class="starter-template">
+        <h1>Faculty Directory</h1>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                {% for key in faculty_info[0].keys()%}
+                    <th> {{key}} </th>
+                {%endfor%}
+            </tr>
+        </thead>
+        <tbody>
+            {% for faculty in faculty_info%}
+            <tr>
+                {%for key in faculty.keys()%}
+                    <td>{{faculty[key]}}</td>
+                {%endfor%}
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}

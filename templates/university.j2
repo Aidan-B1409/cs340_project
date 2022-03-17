@@ -1,0 +1,21 @@
+{% extends "public_template.j2" %}
+
+{% block title %}University{%endblock%}
+
+{% block main %}
+
+<div class="container">
+<br>
+<br>
+<b> Update University </b>
+    <table class="table table-bordered">
+        {% for element in uni_info[0].items() %}
+        <tr>
+            <th>{{ element[0] }}</th>
+            <td>{{ element[1] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}
