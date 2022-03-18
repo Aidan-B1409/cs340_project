@@ -16,6 +16,8 @@
                 {% for key in faculty_info[0].keys()%}
                     <th> {{key}} </th>
                 {%endfor%}
+                <th>Delete</th>
+                <th>Update</th>
             </tr>
         </thead>
         <tbody>
@@ -24,6 +26,8 @@
                 {%for key in faculty.keys()%}
                     <td>{{faculty[key]}}</td>
                 {%endfor%}
+                <td><a href="delete_faculty/{{faculty['id']}}" class="btn btn-default">Delete</a></td>
+                <td><a href="update_faculty/{{faculty['id']}}" class="btn btn-default">Update</a></td>
             </tr>
             {%endfor%}
         </tbody>

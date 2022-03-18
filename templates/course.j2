@@ -16,6 +16,8 @@
                 {% for key in course_info[0].keys()%}
                     <th> {{key}} </th>
                 {%endfor%}
+                <th>Delete</th>
+                <th>Update</th>
             </tr>
         </thead>
         <tbody>
@@ -24,10 +26,27 @@
                 {%for key in course.keys()%}
                     <td>{{course[key]}}</td>
                 {%endfor%}
+                <td><a href="delete_course/{{course['id']}}" class="btn btn-default">Delete</a></td>
+                <td><a href="update_course/{{course['id']}}" class="btn btn-default">Update</a></td>
             </tr>
             {%endfor%}
         </tbody>
     </table>
+</div>
+
+<div class="container">
+    <div class="starter-template">
+        <h1>Search for a class</h1>
+    </div>
+    <form action="" method="post">
+        <div class="form-group row">
+            <label for="search_class" class="col-sm-2 col-form-label">Class Name</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" name="search_class" id="search_class">
+            </div> 
+        </div>
+        <button type="submit" name="course-search" value="course-search" class="btn btn-primary mb-2">Search For Class</button>
+    </form>
 </div>
 
 <div class="container">

@@ -16,6 +16,8 @@
                 {% for key in major_info[0].keys()%}
                     <th> {{key}} </th>
                 {%endfor%}
+                <th>Delete</th>
+                <th>Update</th>
             </tr>
         </thead>
         <tbody>
@@ -24,6 +26,8 @@
                 {%for key in major.keys()%}
                     <td>{{major[key]}}</td>
                 {%endfor%}
+                <td><a href="delete_major/{{major['id']}}" class="btn btn-default">Delete</a></td>
+                <td><a href="update_major/{{major['id']}}" class="btn btn-default">Update</a></td>
             </tr>
             {%endfor%}
         </tbody>
