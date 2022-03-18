@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html >
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,10 +9,10 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
 
-    <title>{% block title %}{% endblock %}</title>
+    <title>cs-340 project</title>
 
     <!-- Custom styles for this template -->
-    <link href="{{ url_for('static', filename='index.css') }}" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -22,7 +22,7 @@
   </head>
 
   <body>
-    
+
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
@@ -32,26 +32,68 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">edu-db</a>
+          <a class="navbar-brand" href="#">edu-db</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li><a href="/">Home</a></li>
-            <li><a href="university">University</a></li>
-            <li><a href="major">Major</a></li>
-            <li><a href="faculty">Faculty</a></li>
-            <li><a href="student">Student</a></li>
-            <li><a href="course">Courses</a></li>
-            <li><a href="studentcourse">Student-Courses</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="university.html">University</a></li>
+            <li class="active"><a href="major.html">Major</a></li>
+            <li><a href="faculty.html">Faculty</a></li>
+            <li><a href="student.html">Student</a></li>
+            <li><a href="class.html">Class</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
 
-    <main>
-      {% block main %}{% endblock %}
-    </main>
+    <div class="container">
 
+      <div class="starter-template">
+        <h1>Eudcation Database Management Tool Demo</h1>
+      </div>
+
+      <table class="table table-bordered">
+        <tr>
+            <th colspan="3" class="table_header">Majors at {university.name}</th>
+        </tr>
+        <tr>
+            <th class="table_header">Name</th>
+            <th class="table_header">Major Code</th>
+            <th class="table_header">Description</th>
+        </tr>
+        <tr>
+            <td>"  "</td>
+            <td>"  "</td>
+            <td>"  "</td>
+        </tr>
+      </table>
+
+      <div id="search" class="form-group">
+        <label for="exampleFormControlInput1">Query for Major</label>
+        <!--automatically insert FROM Faculty into query-->
+        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="SELECT * WHERE fname = 'Computer Science'">
+      </div>
+
+    <table class="table table-bordered">
+      <b> Insert new major</b>
+        <tr>
+            <th>Name</th>
+            <td contenteditable="true">varchar</td>
+        </tr>
+        <tr>
+            <th>Major Code</th>
+            <td contenteditable="true">integer</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td contenteditable="true">TEXT</td>
+        </tr>
+    </table>
+
+
+
+    </div><!-- /.container -->
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
