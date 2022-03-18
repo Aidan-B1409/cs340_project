@@ -1,0 +1,58 @@
+{% extends "public_template.j2" %}
+
+{% block title %}Major{%endblock%}
+
+{% block main %}
+
+<div class="container">
+
+    <div class="starter-template">
+        <h1>Majors</h1>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                {% for key in major_info[0].keys()%}
+                    <th> {{key}} </th>
+                {%endfor%}
+                <th>Delete</th>
+                <th>Update</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for major in major_info%}
+            <tr>
+                {%for key in major.keys()%}
+                    <td>{{major[key]}}</td>
+                {%endfor%}
+                <td><a href="delete_major/{{major['id']}}" class="btn btn-default">Delete</a></td>
+                <td><a href="update_major/{{major['id']}}" class="btn btn-default">Update</a></td>
+            </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</div>
+
+<div class="container">
+        <div class="starter-template">
+            <h1>Add new major</h1>
+        </div>
+
+        <form action="" method="post">
+            {% for field in form_fields.items() %}
+                <div class="form-group row">
+                    <label for="{{field[0]}}" class="col-sm-2 col-form-label">{{field[1]}}</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control" name="{{field[0]}}" id="{{field[0]}}">
+                    </div>
+                </div>
+            {% endfor %}
+            <button type="submit" name="major-submit" value="major-submit" class="btn btn-primary mb-2">Submit Major</button>
+        </form>
+    </div>
+</div>
+
+
+
+{% endblock %}
